@@ -6,7 +6,7 @@ Console.Write("Введите целое число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 int i = 2;
 
-while (i < num - 2)
+while (i <= num - 2)
 {
     Console.Write($"{i}, ");
     i += 2;
