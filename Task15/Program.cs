@@ -17,7 +17,7 @@ bool DayCheck(int dayNumber)
 Console.WriteLine("Введите номер дня недели");
 int dayNum = Convert.ToInt32(Console.ReadLine());
 
-//такой вывод ещё премлем?
+//такой вывод приемлем?
 
 Console.WriteLine(DayCheck(dayNum) ? (DayOffCheck(dayNum) ? "Это выходной": "Это не выходной") : "В нашем мире нет такого дня недели"); 
 
