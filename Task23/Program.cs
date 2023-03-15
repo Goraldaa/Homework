@@ -10,15 +10,15 @@
 Console.WriteLine("Введите натуральное число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
-TableSquare(num);
+TableCube(num);
 
-void TableSquare(int number)
+void TableCube(int number)
 {
   int count = 1;
   while (count <= number)
   {
-    int squad = count * count * count;
-    Console.WriteLine($"{count, 5} | {squad, 5}");
+    int cube = count * count * count;
+    Console.WriteLine($"{count, 5} | {cube, 5}");
     count++;
   }
 
