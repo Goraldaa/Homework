@@ -27,10 +27,10 @@ bool Poli(int number, int size)
 
 Console.WriteLine("Введите число");
 string num = Console.ReadLine();
-int size = num[0] == '-'? num.Length - 1 : num.Length;
-int number = Convert.ToInt32(num);
-if(number < 0) number *= -1;
+int size_num = num[0] == '-'? num.Length - 1 : num.Length;
+int number_int = Convert.ToInt32(num);
+if(number_int < 0) number_int *= -1;
 
 
-Console.WriteLine(Poli(number, size) ? "да" : "нет");
+Console.WriteLine(Poli(number_int, size_num) ? "да" : "нет");
 
