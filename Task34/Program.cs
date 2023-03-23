@@ -38,6 +38,11 @@ int CountEvenNumber(int[] array)
 Console.WriteLine("Давайте создадим массив.");
 Console.Write("Введите размер массива: ");
 int arrSize = Convert.ToInt32(Console.ReadLine());
+if (arrSize <= 0)
+{
+    Console.WriteLine($"Ошибка: введено неверное значение {arrSize}. Размер массива должен быть положительным числом.");
+    return;
+}
 int[] arr = CreateArray(arrSize, 100, 1000);
 int countNumber = CountEvenNumber(arr);
 Console.Write("В массиве ");
