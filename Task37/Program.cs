@@ -26,13 +26,13 @@ void PrintArray(int[] array)
 }
 int[] ProductNumbers(int[] array)
 {
-    int count = array.Length % 2 == 0 ? array.Length / 2 : array.Length / 2 + 1;
-    int[] newArray = new int[count];
-    for (int i = 0; i < count; i++)
-    {
-        if (i == array.Length - 1 - i) newArray[i] = array[i];
-        else newArray[i] = array[i] * array[array.Length - 1 - i];
-    }
+    //int count = array.Length % 2 == 0 ? array.Length / 2 : array.Length / 2 + 1;
+    int count = Convert.ToInt32(Math.Round(array.Length / 2.0, MidpointRounding.AwayFromZero));
+    int[] newArray = new int[count]; 
+    for (int i = 0; i < array.Length / 2; i++)
+        newArray[i] = array[i] * array[array.Length - 1 - i];
+    if (count > array.Length / 2)
+        newArray[count - 1] = array[count - 1];
     return newArray;
 }
 
@@ -62,3 +62,7 @@ Console.Write("[");
 PrintArray(arr);
 Console.Write("] -> ");
 PrintArray(newArr);
+
+// double n = 5.0/2.0;
+// Console.WriteLine(n);
+// Console.Write(Math.Round(2.5, MidpointRounding.AwayFromZero));
