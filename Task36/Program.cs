@@ -44,13 +44,18 @@ if (arraySize <= 0)
     Console.WriteLine($"Ошибка: введено неверное значение {arraySize}. Размер массива должен быть положительным числом.");
     return;
 }
+if (arraySize == 1)
+{
+    Console.WriteLine($"В таком массиве не будет элементов с нечётным индексом.");
+    return;
+}
 Console.Write("Введите минимально возможное число в массиве:");
 int minNum = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите максимально возможное число в массиве:");
 int maxNum = Convert.ToInt32(Console.ReadLine());
 if (minNum > maxNum)
 {
-    Console.WriteLine($"Ошибка: минимальное значение массива не может превышать максимальное, попробуйте снова");
+    Console.WriteLine($"Ошибка: минимальное значение массива не может превышать максимальное, попробуйте снова.");
     return;
 }
 
