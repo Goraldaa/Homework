@@ -53,7 +53,7 @@ int[] CoordinatesMinimumValue(int[,] matrix)
     }
     return new int[] { minRow, minColumn };
 }
-int[,] NewMatrix(int[,] matrix, int[] coords)
+int[,] MatrixWithoutRowColumnMinValue(int[,] matrix, int[] coords)
 {
     int[,] newMatrix = new int[matrix.GetLength(0) - 1, matrix.GetLength(1) - 1];
     for (int i = 0, newRow = 0; i < matrix.GetLength(0); i++)
@@ -73,6 +73,6 @@ int[,] NewMatrix(int[,] matrix, int[] coords)
 int[,] array2d = CreateMatrix(5, 7, -10, 10);
 PrintMatrix(array2d);
 int[] coordinates = CoordinatesMinimumValue(array2d);
-int[,] newArray2d = NewMatrix(array2d, coordinates);
+int[,] newArray2d = MatrixWithoutRowColumnMinValue(array2d, coordinates);
 Console.WriteLine();
 PrintMatrix(newArray2d);
