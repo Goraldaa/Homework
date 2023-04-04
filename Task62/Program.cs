@@ -8,20 +8,27 @@
 
 
 
-// void SpiralFillingMatrix(int[,] matrix, int row, int col, int numberFirst)
-// {
-//     if (matrix[row, col] == 0)
-//     {
-//         matrix[row, col] = numberFirst;
-//         numberFirst++;
-//         if (row > 0 && col < matrix.GetLength(1) && matrix[row, col + 1] == 0 ) SpiralFillingMatrix(matrix, row - 1, col, numberFirst);
-//         if (col < matrix.GetLength(1) - 1) SpiralFillingMatrix(matrix, row, col + 1, numberFirst); // переход вправо
-//         if (row < matrix.GetLength(0) - 1) SpiralFillingMatrix(matrix, row + 1, col, numberFirst); // переход ниже
-//         if (col > 0) SpiralFillingMatrix(matrix, row, col - 1, numberFirst); // переход  влево
-//         if (row > 0) SpiralFillingMatrix(matrix, row - 1, col, numberFirst); // переход выше
-           
-//     }
-// }
+int CountSpiral(int[,] matrix)
+{
+    int countHor = matrix.GetLength(1) % 2 == 0 ? matrix.GetLength(1) : matrix.GetLength(1) / 2 + 1;
+    int countVert = matrix.GetLength(0) % 2 == 0 ? matrix.GetLength(0) : matrix.GetLength(0) / 2 + 1;
+    int count = matrix.GetLength(0) > matrix.GetLength(1) ? countHor : countVert;
+    return count;
+}
+void SpiralFillingMatrix(int[,] matrix, int row, int col, int numberFirst, int count)
+{
+    if (matrix[row, col] == 0)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            matrix[row, col] = numberFirst;
+            if (row == i && col < matrix.GetLength(1) - 1) SpiralFillingMatrix(matrix, row, col + 1, numberFirst + 1, count); // переход вправо
+            if (col == matrix.GetLength(1) - 1 - i && row < matrix.GetLength(0) - 1) SpiralFillingMatrix(matrix, row + 1, col, numberFirst + 1, count); // переход ниже
+            if (row == matrix.GetLength(0) - 1 - i && col > 0) SpiralFillingMatrix(matrix, row, col - 1, numberFirst + 1, count); // переход  влево
+            if (col == i && row > 0) SpiralFillingMatrix(matrix, row - 1, col, numberFirst + 1, count); // переход выше
+        }
+    }
+}
 void PrintMatrix(int[,] matrix)
 {
 
@@ -33,34 +40,8 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-void SpiralFillingMatrix(int[,] matrix, int numberFirst)
-{
-    int numberSecond = numberFirst;
-    int sizeHorizon = matrix.GetLength(1);
-    int sizeVertical = matrix.GetLength(0);
-    for (int i = 0; i < sizeHorizon; i++)
-    {
-        numberSecond = numberFirst + sizeHorizon + sizeVertical -2;
-        matrix[0,i] = numberFirst;
-        numberFirst++;
-        matrix[sizeVertical-1, sizeHorizon -1-i] = numberSecond;
-        numberSecond++;
-    }
-     for (int i = 1 ; i < sizeVertical -1; i++)
-    {
-        numberFirst = sizeHorizon + i;
-        numberSecond = numberFirst + sizeHorizon + sizeVertical - 2;
-        matrix[i, sizeVertical -1] = numberFirst;
-        numberFirst++;
-        matrix[sizeVertical - 1 -i, 0] = numberSecond;
-        numberSecond ++;
-    }
-    
-}
-
-
-
-
-int[,] array2d = new int[4, 4];
-SpiralFillingMatrix(array2d, 1);
+int[,] array2d = new int[10, 10];
+//SpiralFillingMatrix(array2d, 1);
+int countSpiral = CountSpiral(array2d);
+SpiralFillingMatrix(array2d, 0, 0, 1, countSpiral);
 PrintMatrix(array2d);
