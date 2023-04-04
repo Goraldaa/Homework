@@ -9,7 +9,7 @@ int SumNumberBetweenAB(int numberA, int numberB)
 }
 bool Verification(int numberA, int numberB)
 {
-    return (numberA < 1 || numberB < 0);
+    return (numberA < 0 || numberB < 0);
 }
 
 
@@ -24,12 +24,12 @@ if(Verification(numA, numB))
     Console.WriteLine("Введены не натуральные числа");
     return;
 }
-if (numA == numB)
-{
-    Console.WriteLine("Числа равны");
-    return;
-}
-if (numA < numB)
+// if (numA == numB)
+// {
+//     Console.WriteLine("Числа равны ");
+//     return;
+// }
+if (numA <= numB)
     sumNumber = SumNumberBetweenAB(numA, numB);
 
 if (numA > numB)
